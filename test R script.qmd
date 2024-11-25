@@ -45,4 +45,6 @@ plot1 <- CN_df |>
   ggplot(aes(x=pctC, y=pctN)) +
     geom_point(shape=1)      # Use hollow circles
 plot1
+
+ggsave("ScatterPlot.jpg")
 ```
