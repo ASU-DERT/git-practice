@@ -17,11 +17,34 @@ Try running this code:
 1 + 1
 ```
 
-You can add options to executable code like this
+## Libraries and File Input
+
+### Load packages
 
 ```{r}
-#| echo: false
-2 * 2
+#| label: load needed packages
+library(here)
+library(tidyverse)
 ```
 
-The `echo: false` option disables the printing of code (only output is displayed).
+### Pull in Files from Dropbox
+
+Here we use an example of a Costech file that is stored in the DERT Dropbox (e.g., "230512_UTEP_test.csv" to format data file for analysis). We'll pull this in using the Dropbox link.
+
+```{r}
+#| label: read in input data file
+### copy the Dropbox link inside of quotes and then change the final number from 0 to 1. 
+CN_df <- read.csv("https://www.dropbox.com/scl/fi/atgi3wpwqbuo6a3qqvubr/230512_UTEP_test.csv?rlkey=nqxboqc9y767xxt3b78ov4733&dl=1")
+```
+
+## Make a Graph
+
+```{r}
+# scatterplot of pctC versus pctN
+plot1 <- CN_df |>
+  ggplot(aes(x=pctC, y=pctN)) +
+    geom_point(shape=1)      # Use hollow circles
+plot1
+
+
+```
